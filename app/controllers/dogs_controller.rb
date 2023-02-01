@@ -14,7 +14,11 @@ class DogsController < ApplicationController
     def update
         dog = Dog.find(params[:id])
         Dog.update(dog_params)
-        render json: dog
+        if dog.valid?
+            render json: dog
+        else
+            render json: dog.errors, status: 422
+        end
     end
     def destroy
         dog = Dog.find(params[:id])
