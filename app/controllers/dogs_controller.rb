@@ -12,7 +12,7 @@ class DogsController < ApplicationController
       
     def update
         dog = Dog.find(params[:id])
-        Dog.update(dog_params)
+        dog.update(dog_params)
         render json: dog
     end
       
